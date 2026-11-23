@@ -22,6 +22,7 @@ impl Build for Stack {
             "scroll_to",
         ],
         pointer::POINTER,
+        ends::ENDS,
     ];
 
     fn build(kind: Element, fields: &Fields, tree: &mut Tree<'_>) -> Result<Self, Error> {
@@ -60,6 +61,7 @@ impl Build for Stack {
                 .map(Box::new),
             children: tree.children(fields)?,
             slots: fields.slots().to_vec(),
+            ends: Ends::from_fields(fields)?,
         })
     }
 }
